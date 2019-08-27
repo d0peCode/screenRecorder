@@ -1,0 +1,49 @@
+/*
+    media query manager:
+
+    0 - 600px       : phone
+    600 - 900px     : tablet
+    900 - 1200px    : small laptop
+    1800px +        : desktop
+
+    - phone
+    - tab-port
+    - tab-land
+    - big-desktop
+
+    1em = 16px here
+ */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+
+body {
+  box-sizing: border-box;
+  background-color: #f7f5ed;
+  overflow-x: hidden; }
+  body > div {
+    padding: 1.5rem; }
+  @media only screen and (max-width: 768px) {
+    body > div {
+      padding: 0; } }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0; }
+
+a {
+  text-decoration: none; }

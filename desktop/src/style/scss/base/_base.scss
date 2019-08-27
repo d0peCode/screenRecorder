@@ -1,0 +1,48 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    // default browser font size is 16px
+    // convert it to 10 px for convienient
+    // so 1 rem is 10 px
+    font-size: 62.5%;
+
+    @include respond(big-desktop) {
+        font-size: 75%;
+    }
+    @include respond(tab-port) {
+        font-size: 50%;
+    }
+    @include respond(tab-land) {
+        font-size: 56.25%;
+    }
+}
+
+body {
+    box-sizing: border-box;
+    background-color: $color-grey-light-1;
+    overflow-x: hidden;
+
+    & > div {
+        padding: 1.5rem;
+    }
+
+    @media only screen and (max-width: 768px) {
+        & > div {
+            padding: 0;
+        }
+    }
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}

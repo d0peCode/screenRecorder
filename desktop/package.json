@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "compile:sass": "node-sass src/css/scss/main.scss src/css/output.css -w"
+    "compile:sass": "node-sass src/style/scss/main.scss src/style/css/output.css -w"
   },
   "repository": {
     "type": "git",
