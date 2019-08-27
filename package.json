@@ -1,0 +1,25 @@
+{
+  "name": "traderspy",
+  "version": "1.0.0",
+  "description": "traderSpy native app for capturing user screen for acctrader",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://dopeCode@bitbucket.org/dopeCode/traderspy.git"
+  },
+  "author": "Borys Tyminski",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/dopeCode/traderspy#readme",
+  "dependencies": {
+    "angular": "^1.6.5",
+    "angular-localforage": "^1.3.7",
+    "angular-route": "^1.6.5",
+    "bootstrap": "^3.3.7",
+    "electron": "^1.7.11",
+    "electron-screencapture": "^1.1.0",
+    "localforage": "^1.5.6"
+  }
+}
