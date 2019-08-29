@@ -12,16 +12,22 @@
     function Controller($scope, recorderService) {
         $scope.hello = "Hello World";
         $scope.outputVideoPath = "";
+
         $scope.openDialog = () => {
-            ipcRenderer.send('video:finished');
-            //$scope.outputVideoPath = dialog.showOpenDialog({ properties: ['openDirectory'] });
+            ipcRenderer.send('pick::path');
         };
         $scope.startRecord = () => {
-            recorderService.recorder.init()
-                .then(() => {
-                    console.log('Recorded');
-                });
-        }
-    }
+            ipcRenderer.send('start::recording');
+        };
 
+        ipcRenderer.on('path::chosen', (e, path) => {
+            console.log('path', path)
+            $scope.outputVideoPath = path;
+            console.log('$scope.outputVideoPath',$scope.outputVideoPath);
+            $scope.$apply();
+        });
+        ipcRenderer.on('video::finished', (e, path) => {
+            $scope.outputVideoPath = path;
+        });
+    }
 })();

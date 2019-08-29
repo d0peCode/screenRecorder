@@ -1,19 +1,20 @@
 const url = require('url');
 const path = require('path');
-const windowManager = require('./window/windowManager');
-const { app, ipcMain } = require('electron');
+const window = require('./window');
+const {dialog, app, ipcMain } = require('electron');
 
 let mainWindow, transparentWindow;
 
 app.on('ready', () => {
-    mainWindow = windowManager.create(path.join(__dirname, '../..', 'html/index.html'), {width: 500, height: 400})
+    mainWindow = window.create(path.join(__dirname, '../..', 'html/index.html'), {width: 500, height: 400})
 });
 
-ipcMain.on('pick::path', () => {
-
+ipcMain.on('pick::path', async() => {
+    const path = await dialog.showOpenDialog({ properties: ['openDirectory'] });
+    mainWindow.webContents.send('path::chosen', path.filePaths[0]);
 });
 
-ipcMain.on('video:started', () => {
+ipcMain.on('start::video', () => {
     mainWindow.minimize();
-    transparentWindow = windowManager.create(path.join(__dirname, '../..', 'html/index.html#!/recording'))
+    transparentWindow = window.create(path.join(__dirname, '../..', 'html/index.html#!/recording'))
 });
