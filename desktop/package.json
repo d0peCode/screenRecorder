@@ -4,7 +4,7 @@
   "description": "Electron application to record screen",
   "main": "index.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electron ./src/js/main/index.js",
     "compile:sass": "node-sass src/style/scss/main.scss src/style/css/output.css -w"
   },
   "repository": {
@@ -19,9 +19,10 @@
     "angular-localforage": "^1.3.7",
     "angular-route": "^1.6.5",
     "bootstrap": "^3.4.1",
-    "electron": "^1.8.8",
+    "electron": "^6.0.2",
     "electron-screencapture": "^1.1.0",
-    "localforage": "^1.5.6"
+    "localforage": "^1.5.6",
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
     "electron-builder": "^21.2.0",

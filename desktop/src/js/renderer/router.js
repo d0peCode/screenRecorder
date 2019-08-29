@@ -10,8 +10,8 @@
     function configure($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'html/firstView.html',
-                controller: 'loggedScreen',
+                templateUrl: '../html/views/firstView.html',
+                controller: 'firstView',
             })
             .when('/recording', {
                 templateUrl: 'html/recorderView.html',

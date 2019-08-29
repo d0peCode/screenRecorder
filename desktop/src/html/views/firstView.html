@@ -1,0 +1,14 @@
+<main>
+    <header>
+        <h2>{{ hello }}</h2>
+    </header>
+    <section>
+        <h3>Select video output directory</h3>
+        <button type="button" ng-click="openDialog()">Chose path</button>
+        <p>Path:</p><span>{{ outputVideoPath }}</span>
+    </section>
+    <section>
+        <h3>Start recording</h3>
+        <button type="button" ng-click="startRecord()">Start Recording</button>
+    </section>
+</main>
