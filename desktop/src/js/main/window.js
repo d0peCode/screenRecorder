@@ -1,6 +1,6 @@
 const { BrowserWindow } = require('electron');
 
-module.exports = windowManager = {
+module.exports = window = {
     create(winUrl, size) {
         const config = {
             height: size.height,
