@@ -19,7 +19,7 @@ ipcMain.on('pick::path', async() => {
     mainWindow.webContents.send('path::chosen', path.filePaths[0]);
 });
 
-ipcMain.on('start::record', async() => {
+ipcMain.on('start::record', () => {
     mainWindow.minimize();
     const urlTransparent = __dirname + '../../../html/index.html#!/transparent';
     const urlRecording = __dirname + '../../../html/index.html#!/recording';
@@ -46,7 +46,7 @@ ipcMain.on('start::record', async() => {
     );
 });
 
-ipcMain.on('stop::record', async() => {
+ipcMain.on('stop::record', () => {
     transparentWindow.close();
     recordingWindow.close();
     mainWindow.show();
