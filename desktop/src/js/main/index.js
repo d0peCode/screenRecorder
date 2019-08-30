@@ -23,4 +23,5 @@ ipcMain.on('start::record', async() => {
 ipcMain.on('stop::record', async() => {
     transparentWindow.close();
     mainWindow.show();
+    mainWindow.webContents.send('video::finished');
 });

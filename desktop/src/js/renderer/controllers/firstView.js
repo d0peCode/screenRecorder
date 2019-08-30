@@ -28,7 +28,8 @@
             $scope.$apply();
         });
         ipcRenderer.on('video::finished', () => {
-            alert('finished');
+            recorderService.recorder.stopRecord();
+            alert('Saved.');
         });
     }
 })();
