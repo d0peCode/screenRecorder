@@ -22,7 +22,8 @@
     "electron": "^6.0.2",
     "electron-screencapture": "^1.1.0",
     "localforage": "^1.5.6",
-    "uuid": "^3.3.3"
+    "uuid": "^3.3.3",
+    "cloudinary_ng": "^1.1.1"
   },
   "devDependencies": {
     "electron-builder": "^21.2.0",
