@@ -3,7 +3,7 @@ const path = require('path');
 const window = require('./window');
 const {dialog, app, ipcMain} = require('electron');
 
-let mainWindow, transparentWindow;
+let mainWindow, transparentWindow, recordingWindow;
 
 app.on('ready', () => {
     mainWindow = window.create(
@@ -21,9 +21,10 @@ ipcMain.on('pick::path', async() => {
 
 ipcMain.on('start::record', async() => {
     mainWindow.minimize();
-    const url = __dirname + '../../../html/index.html#!/recording';
+    const urlTransparent = __dirname + '../../../html/index.html#!/transparent';
+    const urlRecording = __dirname + '../../../html/index.html#!/recording';
     transparentWindow = window.create(
-        url, 
+        urlTransparent, 
         {width: 1000, height: 500},
         [
             {name: 'transparent', value: true},
@@ -36,6 +37,12 @@ ipcMain.on('start::record', async() => {
             {name: 'setFocusable', value: false},
             {name: 'setFullScreen', value: true}
         ]
+    );
+    recordingWindow = window.create(
+        urlRecording,
+        {width: 250, height: 90},
+        [],
+        [{name: 'setMenu', value: null}]
     );
 });
 

@@ -13,8 +13,11 @@
                 templateUrl: '../html/views/firstView.html',
                 controller: 'firstView',
             })
+            .when('/transparent', {
+                templateUrl: '../html/views/transparentView.html'
+            })
             .when('/recording', {
-                templateUrl: '../html/views/transparentView.html',
+                templateUrl: '../html/views/recorderView.html',
                 controller: 'recorder'
             })
         ;
