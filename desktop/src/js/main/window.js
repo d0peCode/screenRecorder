@@ -11,7 +11,7 @@ module.exports = window = {
                 nodeIntegrationInWorker: false
             }
         };
-        if(config && config.length > 0) {
+        if(options && options.length > 0) {
             for(let i = 0; i < options.length; i++) {
                 config[options[i].name] = options[i].value
             }
