@@ -61,7 +61,7 @@
                 }
                 return buffer;
             },
-            stopRecording() {
+            stopRecord() {
                 recorder.onstop = () => {
                     this.toArrayBuffer(new Blob(blobs, {type: 'video/webm'}), (chunk) => {
                         const buffer = this.toBuffer(chunk);

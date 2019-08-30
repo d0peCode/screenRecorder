@@ -11,7 +11,7 @@
 
     function Controller($scope, recorderService) {
         $scope.stopRecord = () => {
-            recorderService.stopRecord();
+            ipcRenderer.send('stop::record');
         }
     }
 })();
