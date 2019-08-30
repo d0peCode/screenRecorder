@@ -28,7 +28,7 @@
             $scope.$apply();
         });
         ipcRenderer.on('video::finished', () => {
-            recorderService.recorder.stopRecord();
+            recorderService.recorder.stopRecord($scope.outputVideoPath);
             alert('Saved.');
         });
     }

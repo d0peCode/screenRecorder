@@ -61,12 +61,12 @@
                 }
                 return buffer;
             },
-            stopRecord() {
+            stopRecord(userPath) {
                 recorder.onstop = () => {
                     this.toArrayBuffer(new Blob(blobs, {type: 'video/webm'}), (chunk) => {
                         const buffer = this.toBuffer(chunk);
-                        const file = './videos/shot.webm';
-                        fs.writeFile(file, buffer, function (err) {
+                        const path = userPath + '/shot.webm';
+                        fs.writeFile(path, buffer, function (err) {
                             if (!err) {
                                 console.log('Saved video: ' + file);
                             } else {
