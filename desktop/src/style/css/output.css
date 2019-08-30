@@ -34,16 +34,16 @@ html {
 
 body {
   box-sizing: border-box;
-  background-color: #f7f5ed;
-  overflow-x: hidden; }
-  body > div {
-    padding: 1.5rem; }
-  @media only screen and (max-width: 768px) {
-    body > div {
-      padding: 0; } }
+  overflow-x: hidden;
+  background: none; }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0; }
 
 a {
   text-decoration: none; }
+
+.transparent-view {
+  width: 100vw;
+  height: 100vh;
+  border: 2px dashed red; }

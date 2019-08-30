@@ -25,18 +25,8 @@ html {
 
 body {
     box-sizing: border-box;
-    background-color: $color-grey-light-1;
     overflow-x: hidden;
-
-    & > div {
-        padding: 1.5rem;
-    }
-
-    @media only screen and (max-width: 768px) {
-        & > div {
-            padding: 0;
-        }
-    }
+    background: none;
 }
 
 h1,h2,h3,h4,h5,h6 {
