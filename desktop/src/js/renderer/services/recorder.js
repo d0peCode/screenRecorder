@@ -9,8 +9,9 @@
         .module('app')
         .service('recorderService', Service);
 
+    Service.$inject = ['$http', '$rootScope'];
 
-    function Service() {
+    function Service($http, $rootScope) {
         this.recorder = {
             startRecord () {
                 desktopCapturer.getSources({types: ['window', 'screen']})
@@ -61,17 +62,49 @@
                 }
                 return buffer;
             },
-            stopRecord(userPath) {
+            stopRecord(userPath, saveOnline) {
                 recorder.onstop = () => {
-                    this.toArrayBuffer(new Blob(blobs, {type: 'video/webm'}), (chunk) => {
-                        const buffer = this.toBuffer(chunk);
-                        const path = userPath + '/shot.webm';
-                        fs.writeFile(path, buffer, function (err) {
-                            if (!err) {
-                                console.log('Saved video: ' + file);
-                            } else {
-                                alert('Failed to save video ' + err);
-                            }
+                    return new Promise(resolve => {
+                        this.toArrayBuffer(new Blob(blobs, {type: 'video/webm'}), (chunk) => {
+                            const buffer = this.toBuffer(chunk);
+                            const path = userPath + '/shot.webm';
+                            fs.writeFile(path, buffer, function (err) {
+                                if (!err) {
+                                    console.log('Saved video: ' + path, 'do save online?', saveOnline);
+                                    if(saveOnline) {
+                                        console.log('save online');
+                                        const buff = Buffer.from(buffer).toString('base64');
+                                        $http({
+                                            method: 'POST',
+                                            url: 'https://api.cloudinary.com/v1_1/dyqhomagf/upload',
+                                            data: {
+                                                upload_preset: 'bsfgxm61',
+                                                file: 'data:video/webm;base64,' + buff
+                                            },
+                                            uploadEventHandlers: {
+                                                progress: function (e) {
+                                                    console.log(e);
+                                                    if(e && e.total && e.loaded) {
+                                                        const progress = Math.floor(e.total / e.loaded);
+                                                        $rootScope.progress = progress;
+                                                    }
+                                                    
+                                                }
+                                            }
+                                        })
+                                        .then(function (res) {
+                                            console.log('Saved online', res.data.secure_url);
+                                            resolve(res.data.secure_url);
+                                        })
+                                        .catch(function (err) {
+                                            console.log('Error saving online', err);
+                                        });
+    
+                                    }
+                                } else {
+                                    alert('Failed to save video ' + err);
+                                }
+                            });
                         });
                     });
                 };
