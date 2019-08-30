@@ -12,6 +12,7 @@
     function Controller($scope, recorderService) {
         $scope.app = "ScreenRecorder";
         $scope.outputVideoPath = "";
+        $scope.saveOnline = false;
 
         $scope.openDialog = () => {
             ipcRenderer.send('pick::path');
@@ -28,7 +29,7 @@
             $scope.$apply();
         });
         ipcRenderer.on('video::finished', () => {
-            recorderService.recorder.stopRecord($scope.outputVideoPath);
+            recorderService.recorder.stopRecord($scope.outputVideoPath, $scope.saveOnline);
             alert('Saved.');
         });
     }

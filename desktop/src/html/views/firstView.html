@@ -6,7 +6,11 @@
         <div class="first-view__path-text">
             <span>{{ outputVideoPath }}</span>
         </div>
-        <button class="first-view__path-button" type="button" ng-click="openDialog()">Chose path</button>
+        <button class="first-view__path-button" type="button" ng-click="openDialog()">Chose save path</button>
+    </section>
+    <section class="first-view__options">
+        <input type="checkbox" id="saveOnline" ng-model="saveOnline">
+        <label for="saveOnline">Save video online and give URL</label>
     </section>
     <section>
         <button class="first-view__button" type="button" ng-click="startRecord()">Start Recording</button>
