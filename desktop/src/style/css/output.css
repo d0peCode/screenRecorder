@@ -35,13 +35,52 @@ html {
 body {
   box-sizing: border-box;
   overflow-x: hidden;
-  background: none; }
+  background: none;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0; }
 
 a {
   text-decoration: none; }
+
+.first-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .first-view__path {
+    margin: 2rem 0;
+    display: flex;
+    width: 100%; }
+    .first-view__path-text {
+      flex: 1;
+      border: 1px solid gray;
+      height: 30px;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px; }
+    .first-view__path-button {
+      padding: 0 5px;
+      border: 1px solid gray;
+      border-left: none;
+      height: 30px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      font-weight: 700; }
+  .first-view__button {
+    width: 25rem;
+    height: 4rem;
+    border: 0;
+    background-color: green;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 900;
+    border-radius: 5px; }
 
 .transparent-view {
   width: 100vw;

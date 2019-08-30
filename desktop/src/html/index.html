@@ -8,12 +8,8 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 <body data-ng-app="app">
+    <ng-view></ng-view>
 
-    <div>
-        <ng-view></ng-view>
-    </div>
-
-    <!-- remember to change it to .min version before switching to production -->
     <script src="../../node_modules/angular/angular.js"></script>
     <script src="../../node_modules/angular-route/angular-route.js"></script>
     <script src="../../node_modules/localforage/dist/localforage.js"></script>

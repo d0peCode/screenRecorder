@@ -8,7 +8,7 @@ let mainWindow, transparentWindow, recordingWindow;
 app.on('ready', () => {
     mainWindow = window.create(
         path.join(__dirname, '../..', 'html/index.html'), 
-        {width: 500, height: 400}, 
+        {width: 500, height: 300}, 
         [], 
         [{name: 'setMenu', value: null}]
     );

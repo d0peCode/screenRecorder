@@ -10,7 +10,7 @@
     Controller.$inject = ['$scope', 'recorderService'];
 
     function Controller($scope, recorderService) {
-        $scope.hello = "Hello World";
+        $scope.app = "ScreenRecorder";
         $scope.outputVideoPath = "";
 
         $scope.openDialog = () => {
