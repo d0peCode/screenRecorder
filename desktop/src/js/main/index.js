@@ -1,9 +1,7 @@
 const url = require('url');
 const path = require('path');
 const window = require('./window');
-const {desktopCapturer, dialog, app, ipcMain } = require('electron');
-
-const recorder = require('./recorder');
+const {dialog, app, ipcMain} = require('electron');
 
 let mainWindow, transparentWindow;
 
@@ -17,7 +15,12 @@ ipcMain.on('pick::path', async() => {
 });
 
 ipcMain.on('start::record', async() => {
-    console.log('zzz',desktopCapturer)
     mainWindow.minimize();
-    transparentWindow = window.create(path.join(__dirname, '../..', 'html/index.html#!/recording'), {width: 500, height: 400})
+    const url = __dirname + '../../../html/index.html#!/recording';
+    transparentWindow = window.create(url, {width: 1000, height: 500});
+});
+
+ipcMain.on('stop::record', async() => {
+    transparentWindow.close();
+    mainWindow.show();
 });

@@ -14,8 +14,8 @@
                 controller: 'firstView',
             })
             .when('/recording', {
-                templateUrl: 'html/recorderView.html',
-                controller: 'firstScreen'
+                templateUrl: '../html/views/recorderView.html',
+                controller: 'recorder'
             })
         ;
     }

@@ -76,16 +76,6 @@
                     });
                 };
                 recorder.stop();
-            },
-            init() {
-                return new Promise((resolve) => {
-                    this.startRecord();
-                    setTimeout(() => {
-                        // stop recording after 2sec
-                        this.stopRecording();
-                        resolve();
-                    }, 2000);
-                });
             }
         }
     }

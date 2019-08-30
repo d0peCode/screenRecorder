@@ -18,15 +18,13 @@
         };
         $scope.startRecord = () => {
             if($scope.outputVideoPath) {
+                recorderService.recorder.startRecord();
                 ipcRenderer.send('start::record');
-                recorderService.recorder.init();
             } else alert('Please establish saving path.')
         };
 
         ipcRenderer.on('path::chosen', (e, path) => {
-            console.log('path', path)
             $scope.outputVideoPath = path;
-            console.log('$scope.outputVideoPath',$scope.outputVideoPath);
             $scope.$apply();
         });
         ipcRenderer.on('video::finished', () => {
