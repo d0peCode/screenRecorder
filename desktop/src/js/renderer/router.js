@@ -14,7 +14,7 @@
                 controller: 'firstView',
             })
             .when('/recording', {
-                templateUrl: '../html/views/recorderView.html',
+                templateUrl: '../html/views/transparentView.html',
                 controller: 'recorder'
             })
         ;
