@@ -39,7 +39,11 @@ body {
   height: 90vh;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-family: 'Lato', sans-serif; }
+
+button {
+  cursor: pointer; }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0; }
@@ -47,23 +51,29 @@ h1, h2, h3, h4, h5, h6 {
 a {
   text-decoration: none; }
 
-.first-view {
+.landing {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center; }
-  .first-view__path {
+  .landing__header {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 4rem; }
+  .landing__path {
     margin: 2rem 0;
     display: flex;
     width: 110%; }
-    .first-view__path-text {
+    .landing__path-text {
       flex: 1;
       border: 1px solid gray;
       height: 30px;
       border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px; }
-    .first-view__path-button {
-      padding: 0 5px;
+      border-bottom-left-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .landing__path-button {
+      padding: 0 3px;
       border: 1px solid gray;
       border-left: none;
       height: 30px;
@@ -72,17 +82,19 @@ a {
       text-transform: uppercase;
       font-size: 1rem;
       font-weight: 700; }
-  .first-view__options {
+  .landing__options {
     display: flex;
-    margin-bottom: 2rem; }
-    .first-view__options input {
+    margin-bottom: 2rem;
+    align-items: center; }
+    .landing__options input {
       height: 2.5rem;
       width: 2.5rem;
       margin: 0; }
-    .first-view__options label {
+    .landing__options label {
+      font-size: 1.4rem;
       padding-left: .5rem;
       margin: 0; }
-  .first-view__button {
+  .landing__button {
     width: 25rem;
     height: 4rem;
     border: 0;
@@ -91,6 +103,19 @@ a {
     color: white;
     font-weight: 900;
     border-radius: 5px; }
+
+.recording-text {
+  font-size: 1.4rem;
+  margin-bottom: 1rem; }
+
+.recording-button {
+  border-radius: 5px;
+  border: 1px solid gray;
+  background-color: lightgray;
+  height: 30px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center; }
 
 .transparent-view {
   width: 100vw;

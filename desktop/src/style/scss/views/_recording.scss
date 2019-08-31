@@ -1,0 +1,15 @@
+.recording {
+    &-text {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+    &-button {
+        border-radius: 5px;
+        border: 1px solid gray;
+        background-color: lightgray;
+        height: 30px;
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+    }
+}

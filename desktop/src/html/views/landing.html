@@ -1,18 +1,18 @@
-<main class="first-view">
+<main class="landing">
     <header>
-        <h1>{{ app }}</h1>
+        <h1 class="landing__header">{{ app }}</h1>
     </header>
-    <section class="first-view__path">
-        <div class="first-view__path-text">
+    <section class="landing__path">
+        <div class="landing__path-text">
             <span>{{ outputVideoPath }}</span>
         </div>
-        <button class="first-view__path-button" type="button" ng-click="openDialog()">Chose save path</button>
+        <button class="landing__path-button" type="button" ng-click="openDialog()">Chose save path</button>
     </section>
-    <section class="first-view__options">
+    <section class="landing__options">
         <input type="checkbox" id="saveOnline" ng-model="saveOnline">
         <label for="saveOnline">Save video online and give URL</label>
     </section>
     <section>
-        <button class="first-view__button" type="button" ng-click="startRecord()">Start Recording</button>
+        <button class="landing__button" type="button" ng-click="startRecord()">Start Recording</button>
     </section>
 </main>
