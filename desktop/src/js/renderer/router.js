@@ -20,6 +20,10 @@
                 templateUrl: '../html/views/recorderView.html',
                 controller: 'recorder'
             })
+            .when('/uploading', {
+                templateUrl: '../html/views/uploaderView.html',
+                controller: 'uploader'
+            })
         ;
     }
 
