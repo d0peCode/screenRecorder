@@ -18,9 +18,7 @@
     "angular": "^1.6.5",
     "angular-route": "^1.6.5",
     "electron": "^6.0.2",
-    "electron-screencapture": "^1.1.0",
-    "localforage": "^1.5.6",
-    "uuid": "^3.3.3"
+    "electron-screencapture": "^1.1.0"
   },
   "devDependencies": {
     "electron-builder": "^21.2.0",
