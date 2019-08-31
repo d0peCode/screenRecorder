@@ -2,7 +2,7 @@
     'use strict';
 
     const fs = require('fs');
-    const { desktopCapturer } = require('electron');
+    const { desktopCapturer, ipcRenderer } = require('electron');
     let recorder, blobs = [];
 
     angular
@@ -64,47 +64,44 @@
             },
             stopRecord(userPath, saveOnline) {
                 recorder.onstop = () => {
-                    return new Promise(resolve => {
-                        this.toArrayBuffer(new Blob(blobs, {type: 'video/webm'}), (chunk) => {
-                            const buffer = this.toBuffer(chunk);
-                            const path = userPath + '/shot.webm';
-                            fs.writeFile(path, buffer, function (err) {
-                                if (!err) {
-                                    console.log('Saved video: ' + path, 'do save online?', saveOnline);
-                                    if(saveOnline) {
-                                        console.log('save online');
-                                        const buff = Buffer.from(buffer).toString('base64');
-                                        $http({
-                                            method: 'POST',
-                                            url: 'https://api.cloudinary.com/v1_1/dyqhomagf/upload',
-                                            data: {
-                                                upload_preset: 'bsfgxm61',
-                                                file: 'data:video/webm;base64,' + buff
-                                            },
-                                            uploadEventHandlers: {
-                                                progress: function (e) {
-                                                    console.log(e);
-                                                    if(e && e.total && e.loaded) {
-                                                        const progress = Math.floor(e.total / e.loaded);
-                                                        $rootScope.progress = progress;
-                                                    }
-                                                    
+                    this.toArrayBuffer(new Blob(blobs, {type: 'video/webm'}), (chunk) => {
+                        const buffer = this.toBuffer(chunk);
+                        const path = userPath + '/shot.webm';
+                        fs.writeFile(path, buffer, function (err) {
+                            if (!err) {
+                                console.log('Saved video: ' + path, 'do save online?', saveOnline);
+                                if(saveOnline) {
+                                    console.log('save online');
+                                    const buff = Buffer.from(buffer).toString('base64');
+                                    $http({
+                                        method: 'POST',
+                                        url: 'https://api.cloudinary.com/v1_1/dyqhomagf/upload',
+                                        data: {
+                                            upload_preset: 'bsfgxm61',
+                                            file: 'data:video/webm;base64,' + buff
+                                        },
+                                        uploadEventHandlers: {
+                                            progress: function (e) {
+                                                console.log(e);
+                                                if(e && e.total && e.loaded) {
+                                                    const progress = Math.floor(e.loaded / e.total * 100);
+                                                    ipcRenderer.send('upload::progress', progress);
                                                 }
                                             }
-                                        })
-                                        .then(function (res) {
-                                            console.log('Saved online', res.data.secure_url);
-                                            resolve(res.data.secure_url);
-                                        })
-                                        .catch(function (err) {
-                                            console.log('Error saving online', err);
-                                        });
-    
-                                    }
-                                } else {
-                                    alert('Failed to save video ' + err);
+                                        }
+                                    })
+                                    .then(function (res) {
+                                        console.log('Saved online', res.data.secure_url);
+                                        ipcRenderer.send('upload::finish', res.data.secure_url);
+                                    })
+                                    .catch(function (err) {
+                                        console.log('Error saving online', err);
+                                    });
+
                                 }
-                            });
+                            } else {
+                                alert('Failed to save video ' + err);
+                            }
                         });
                     });
                 };

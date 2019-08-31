@@ -13,6 +13,7 @@
         $scope.app = "ScreenRecorder";
         $scope.outputVideoPath = "";
         $scope.saveOnline = false;
+        $scope.justSaved = false;
 
         $scope.openDialog = () => {
             ipcRenderer.send('pick::path');
@@ -28,9 +29,13 @@
             $scope.outputVideoPath = path;
             $scope.$apply();
         });
-        ipcRenderer.on('video::finished', () => {
+        ipcRenderer.on('video::finish', async() => {
             recorderService.recorder.stopRecord($scope.outputVideoPath, $scope.saveOnline);
-            alert('Saved.');
+            if(!$scope.saveOnline) {
+                alert('Saved to:', $scope.outputVideoPath);
+            } else {
+                ipcRenderer.send('start::upload');
+            }
         });
     }
 })();

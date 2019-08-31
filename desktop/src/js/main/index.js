@@ -3,7 +3,7 @@ const path = require('path');
 const window = require('./window');
 const {dialog, app, ipcMain} = require('electron');
 
-let mainWindow, transparentWindow, recordingWindow;
+let mainWindow, transparentWindow, recordingWindow, uploadWindow;
 
 app.on('ready', () => {
     mainWindow = window.create(
@@ -50,5 +50,23 @@ ipcMain.on('stop::record', () => {
     transparentWindow.close();
     recordingWindow.close();
     mainWindow.show();
-    mainWindow.webContents.send('video::finished');
+    mainWindow.webContents.send('video::finish');
+});
+
+ipcMain.on('start::upload', () => {
+    const url = __dirname + '../../../html/index.html#!/uploading';
+    uploadWindow = window.create(
+        url, 
+        {width: 680, height: 100},
+        [], 
+        [{name: 'setMenu', value: null}]
+    )
+})
+
+ipcMain.on('upload::progress', (e, progress) => {
+    uploadWindow.webContents.send('upload::progress', progress);
+});
+
+ipcMain.on('upload::finish', (e, url) => {
+    uploadWindow.webContents.send('upload::finish', url);
 });
