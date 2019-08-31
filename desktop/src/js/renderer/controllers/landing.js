@@ -32,7 +32,8 @@
         ipcRenderer.on('video::finish', async() => {
             recorderService.recorder.stopRecord($scope.outputVideoPath, $scope.saveOnline);
             if(!$scope.saveOnline) {
-                alert('Saved to:', $scope.outputVideoPath);
+                const info = `Saved to: ${$scope.outputVideoPath}`;
+                alert(info);
             } else {
                 ipcRenderer.send('start::upload');
             }
