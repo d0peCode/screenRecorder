@@ -14,14 +14,14 @@
                 controller: 'landing',
             })
             .when('/transparent', {
-                templateUrl: '../html/views/transparentView.html'
+                templateUrl: '../html/views/transparent.html'
             })
             .when('/recording', {
-                templateUrl: '../html/views/recorderView.html',
+                templateUrl: '../html/views/recorder.html',
                 controller: 'recorder'
             })
             .when('/uploading', {
-                templateUrl: '../html/views/uploaderView.html',
+                templateUrl: '../html/views/uploader.html',
                 controller: 'uploader'
             })
         ;
