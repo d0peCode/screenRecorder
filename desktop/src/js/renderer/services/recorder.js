@@ -9,9 +9,9 @@
         .module('app')
         .service('recorderService', Service);
 
-    Service.$inject = ['$http', '$rootScope'];
+    Service.$inject = ['$http'];
 
-    function Service($http, $rootScope) {
+    function Service($http) {
         this.recorder = {
             startRecord () {
                 desktopCapturer.getSources({types: ['window', 'screen']})
@@ -66,7 +66,9 @@
                 recorder.onstop = () => {
                     this.toArrayBuffer(new Blob(blobs, {type: 'video/webm'}), (chunk) => {
                         const buffer = this.toBuffer(chunk);
-                        const path = userPath + '/shot.webm';
+                        const randomString = Math.random().toString(36).substring(7);
+                        const randomName = '/' + randomString + '-shot.webm';
+                        const path = userPath + randomName;
                         fs.writeFile(path, buffer, function (err) {
                             if (!err) {
                                 console.log('Saved video: ' + path, 'do save online?', saveOnline);
