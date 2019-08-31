@@ -10,8 +10,8 @@
     function configure($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: '../html/views/firstView.html',
-                controller: 'firstView',
+                templateUrl: '../html/views/landing.html',
+                controller: 'landing',
             })
             .when('/transparent', {
                 templateUrl: '../html/views/transparentView.html'

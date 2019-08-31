@@ -5,7 +5,7 @@
 
     angular
         .module('app')
-        .controller('firstView', Controller);
+        .controller('landing', Controller);
 
     Controller.$inject = ['$scope', 'recorderService'];
 
