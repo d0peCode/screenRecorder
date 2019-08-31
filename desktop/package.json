@@ -2,25 +2,29 @@
   "name": "screenrecorder",
   "version": "1.0.0",
   "description": "Electron application to record screen",
-  "main": "index.js",
+  "main": "./src/js/main/index.js",
   "scripts": {
     "start": "electron ./src/js/main/index.js",
-    "compile:sass": "node-sass src/style/scss/main.scss src/style/css/output.css -w"
+    "compile:sass": "node-sass src/style/scss/main.scss src/style/css/output.css -w",
+    "build": "electron-builder"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/d0peCode/screenRecorder"
+  },
+  "build": {
+    "appId": "screenrecorder",
+    "electronDist": "../dist"
   },
   "author": "Borys Tyminski",
   "license": "ISC",
   "homepage": "https://github.com/d0peCode/screenRecorder#readme",
   "dependencies": {
     "angular": "^1.6.5",
-    "angular-route": "^1.6.5",
-    "electron": "^6.0.2",
-    "electron-screencapture": "^1.1.0"
+    "angular-route": "^1.6.5"
   },
   "devDependencies": {
+    "electron": "^6.0.2",
     "electron-builder": "^21.2.0",
     "node-sass": "^4.9.2"
   }
