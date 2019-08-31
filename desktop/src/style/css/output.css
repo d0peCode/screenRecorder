@@ -121,3 +121,6 @@ a {
   width: 100vw;
   height: 100vh;
   border: 2px dashed red; }
+
+.uploader {
+  font-size: 1.2rem; }
