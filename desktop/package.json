@@ -13,8 +13,7 @@
     "url": "https://github.com/d0peCode/screenRecorder"
   },
   "build": {
-    "appId": "screenrecorder",
-    "electronDist": "../dist"
+    "appId": "screenrecorder"
   },
   "author": "Borys Tyminski",
   "license": "ISC",
