@@ -1,0 +1,5 @@
+directories:
+  output: dist
+  buildResources: build
+appId: screenrecorder
+electronVersion: 6.0.6
