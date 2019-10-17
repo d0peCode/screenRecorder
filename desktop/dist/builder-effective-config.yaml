@@ -1,0 +1,8 @@
+directories:
+  output: dist
+  buildResources: build
+appId: screenrecorder
+mac:
+  category: your.app.category.type
+  target: dmg
+electronVersion: 6.0.6

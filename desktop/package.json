@@ -13,7 +13,11 @@
     "url": "https://github.com/d0peCode/screenRecorder"
   },
   "build": {
-    "appId": "screenrecorder"
+    "appId": "screenrecorder",
+    "mac": {
+      "category": "your.app.category.type",
+      "target": "dmg"
+    }
   },
   "author": "Borys Tyminski",
   "license": "ISC",
