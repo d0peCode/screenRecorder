@@ -23,7 +23,7 @@
   "license": "ISC",
   "homepage": "https://github.com/d0peCode/screenRecorder#readme",
   "dependencies": {
-    "angular": "^1.6.5",
+    "angular": "^1.7.9",
     "angular-route": "^1.6.5"
   },
   "devDependencies": {
