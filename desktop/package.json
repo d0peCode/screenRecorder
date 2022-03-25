@@ -27,7 +27,7 @@
     "angular-route": "^1.6.5"
   },
   "devDependencies": {
-    "electron": "^6.0.2",
+    "electron": "^13.6.6",
     "electron-builder": "^21.2.0",
     "node-sass": "^4.9.2"
   }
